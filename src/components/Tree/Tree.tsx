@@ -14,7 +14,7 @@ import { getBox } from 'css-box-model'
 import { areEqual, FixedSizeList } from 'react-window'
 import { calculateFinalDropPositions, getVirtualItemStyle } from './Tree-utils'
 import {
-  Props,
+  TreeProps,
   State,
   DragState,
   VirtualItemProps,
@@ -32,7 +32,7 @@ import {
 import DelayedFunction from '../../utils/delayed-function'
 import AutoSizer from 'react-virtualized-auto-sizer'
 
-export default class Tree extends Component<Props, State> {
+export default class Tree extends Component<TreeProps, State> {
   static defaultProps = {
     tree: { children: [] },
     onExpand: noop,
@@ -63,7 +63,7 @@ export default class Tree extends Component<Props, State> {
 
   expandTimer = new DelayedFunction(500)
 
-  static getDerivedStateFromProps(props: Props, state: State) {
+  static getDerivedStateFromProps(props: TreeProps, state: State) {
     const { draggedItemId } = state
     const { tree } = props
 
@@ -77,7 +77,7 @@ export default class Tree extends Component<Props, State> {
   }
 
   static closeParentIfNeeded(tree: TreeData, draggedItemId?: ItemId): TreeData {
-    if (!!draggedItemId) {
+    if (draggedItemId) {
       // Closing parent internally during dragging, because visually we can only move one item not a subtree
       return mutateTree(tree, draggedItemId, {
         isExpanded: false,
@@ -305,7 +305,7 @@ export default class Tree extends Component<Props, State> {
   }
 
   setItemRef = (itemId: ItemId, el: HTMLElement | null) => {
-    if (!!el) {
+    if (el) {
       this.itemsElement[itemId] = el
     }
   }

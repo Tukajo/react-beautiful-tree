@@ -18,7 +18,7 @@ import {
 } from '../../types'
 import { RenderItemParams } from '../TreeItem/TreeItem-types'
 
-export type Props = {
+export type TreeProps = {
   /** The tree data structure. */
   tree: TreeData
   /** Function that will be called when a parent item needs to be expanded. */
