@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { prettyDOM, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import React from 'react'
 import { virtualTree } from '../../mockdata/virtualTree'
@@ -80,5 +80,6 @@ const DummyTree = (treeData: TreeData) => {
 test('It renders', () => {
   const { container } = render(<DummyTree {...virtualTree} />)
   const element = container.firstElementChild
+  //console.log(prettyDOM(document))
   expect(element).toBeInTheDocument()
 })
