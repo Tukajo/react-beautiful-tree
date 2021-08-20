@@ -4,6 +4,7 @@
     "plugins": ["@typescript-eslint", "import"],
     "extends": [
       "eslint:recommended",
+      "plugin:react/recommended",
       "plugin:@typescript-eslint/recommended",
       "plugin:prettier/recommended",
       "plugin:import/typescript",
@@ -14,7 +15,10 @@
       "es6": true
     },
     "parserOptions": {
-      "sourceType": "module"
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
     },
     "rules": {
       "@typescript-eslint/ban-types": "off",
